@@ -170,6 +170,18 @@ void reverse()
     head=prev;
 }
 
+void reverserecursion(node* temp)
+{
+    if(temp->next==NULL)
+    {
+        head=temp;
+        return;
+    }
+    reverserecursion(temp->next);
+    temp->next->next=temp;
+    temp->next=NULL;
+}
+
 void remduplicate()
 {   node* dup;
     node* p=head;
@@ -231,7 +243,7 @@ int main()
     insertafteranode(84,25);
     sort();
     display();
-    reverse();
+    reverserecursion(head);
     remduplicate();
     display();
   /*  count();
